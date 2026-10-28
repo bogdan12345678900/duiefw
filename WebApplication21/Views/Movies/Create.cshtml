@@ -1,0 +1,7 @@
+@model Movie
+@{ ViewData["Title"] = "Добавить фильм"; }
+<div style="max-width:720px;margin:auto">
+    <h2 class="mb-4">Добавить фильм</h2>
+    <partial name="_Form" model="Model" />
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

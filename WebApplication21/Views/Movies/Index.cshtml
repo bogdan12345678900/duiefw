@@ -1,0 +1,37 @@
+@model IEnumerable<Movie>
+@{ ViewData["Title"] = "Топ-10"; }
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="m-0">Топ-10 фильмов</h2>
+    <a asp-action="Create" class="btn btn-primary">+ Добавить фильм</a>
+</div>
+
+<div class="table-responsive bg-white rounded shadow-sm">
+<table class="table align-middle mb-0">
+    <thead class="table-dark">
+        <tr><th>#</th><th>Название</th><th>Режиссёр</th><th>Год</th><th>Оценка</th><th></th></tr>
+    </thead>
+    <tbody>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td class="fw-bold">@m.Rank</td>
+            <td>
+                <div class="fw-semibold">@m.Title</div>
+                <small class="text-muted">@m.Description</small>
+            </td>
+            <td>@m.Director</td>
+            <td>@m.Year</td>
+            <td><span class="badge bg-warning text-dark">★ @m.Rating?.ToString("0.0")</span></td>
+            <td class="text-end text-nowrap">
+                <a asp-action="Edit" asp-route-id="@m.Id" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                <form asp-action="Delete" asp-route-id="@m.Id" method="post" class="d-inline"
+                      onsubmit="return confirm('Удалить «@m.Title»?');">
+                    <button class="btn btn-sm btn-outline-danger">Удалить</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,46 @@
+@model Movie
+
+<form method="post" novalidate>
+    <div asp-validation-summary="All" class="validation-summary"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Rank" class="form-label"></label>
+        <input asp-for="Rank" class="form-control" />
+        <span asp-validation-for="Rank"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Director" class="form-label"></label>
+        <input asp-for="Director" class="form-control" />
+        <span asp-validation-for="Director"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Year" class="form-label"></label>
+            <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Rating" class="form-label"></label>
+            <input asp-for="Rating" class="form-control" type="text" inputmode="decimal" />
+            <span asp-validation-for="Rating"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PosterUrl" class="form-label"></label>
+        <input asp-for="PosterUrl" class="form-control" />
+        <span asp-validation-for="PosterUrl"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Отмена</a>
+</form>

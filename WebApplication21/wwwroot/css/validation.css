@@ -1,0 +1,32 @@
+:root { --err:#dc3545; --err-dark:#a52834; --err-bg:#fdecee; --err-border:#f5b5bb; }
+
+@keyframes errorSlideIn { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:none} }
+@keyframes inputShake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-4px)} 40%,80%{transform:translateX(4px)} }
+
+.field-validation-valid { display:none; }
+.field-validation-error {
+    display:flex; align-items:center; gap:.45rem; margin-top:.4rem; padding:.35rem .65rem;
+    font-size:.875rem; font-weight:500; color:var(--err-dark); background:var(--err-bg);
+    border-left:3px solid var(--err); border-radius:0 .375rem .375rem 0;
+    animation:errorSlideIn .3s ease-out;
+}
+.field-validation-error::before, .validation-summary-errors li::before {
+    content:""; flex:0 0 1.1em; width:1.1em; height:1.1em;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc3545'%3E%3Cpath d='M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.input-validation-error {
+    border-color:var(--err) !important; background-color:#fffafa !important;
+    box-shadow:0 0 0 .2rem rgba(220,53,69,.15) !important; animation:inputShake .35s ease-in-out;
+}
+.validation-summary-valid { display:none; }
+.validation-summary-errors {
+    margin-bottom:1.25rem; padding:1rem 1.25rem; color:var(--err-dark); background:var(--err-bg);
+    border:1px solid var(--err-border); border-radius:.5rem; box-shadow:0 2px 8px rgba(220,53,69,.12);
+    animation:errorSlideIn .35s ease-out;
+}
+.validation-summary-errors::before { content:"Пожалуйста, исправьте ошибки в форме:"; display:block; margin-bottom:.5rem; font-weight:700; }
+.validation-summary-errors ul { margin:0; padding:0; list-style:none; }
+.validation-summary-errors li { display:flex; align-items:center; gap:.5rem; padding:.2rem 0; }
+@media (prefers-reduced-motion:reduce) {
+    .field-validation-error,.input-validation-error,.validation-summary-errors { animation:none; }
+}
